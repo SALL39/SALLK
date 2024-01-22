@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+    #Laravel App
+    smapp:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      image: hakase-labs/laravel
+      container_name: smapp
+      restart: unless-stopped
+      tty: true
+      environment:
+        SERVICE_NAME: smapp
+        SERVICE_TAGS: dev
+      working_dir: /var/www/html
+      volumes:
+        - ./:/var/www/html
+      networks:
+        - mynet
+  
+    #Nginx Service
+    smnginx:
+      image: nginx:alpine
+      container_name: smnginx
+      restart: unless-stopped
+      tty: true
+      ports:
+        - "4452:80"
+      volumes:
+        - ./:/var/www/html
+        - ./nginx/conf.d/:/etc/nginx/conf.d/
+        - ./nginx/ssl/:/etc/nginx/ssl/
+      networks:
+        - mynet
+  
+    #MySQL Service
+    smdb:
+      image: mysql:5.7
+      container_name: smdb
+      restart: unless-stopped
+      tty: true
+      ports:
+        - "3323:3306"
+      environment:
+        MYSQL_DATABASE: stockmanagement
+        MYSQL_ROOT_PASSWORD: rootpassword
+      volumes:
+        - mysqldbdata:/var/lib/mysql/
+      networks:
+        - mynet
+  
+#Docker Networks
+networks:
+    mynet:
+      driver: bridge
+  #Volumes
+volumes:
+    mysqldbdata:
+      driver: local

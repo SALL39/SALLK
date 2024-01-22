@@ -1,0 +1,47 @@
+[
+    {
+        "icon": "fas fa-qrcode",
+        "title": "Dashboard",
+        "url": "admin/dashboard"
+    },
+    {
+        "icon": "fas fa-th-list",
+        "title": "Manage Category",
+        "children": [{
+                "icon": "fas fa-angle-right",
+                "title": "Manage Category",
+                "url": "admin/category"
+            },
+            {
+                "icon": "fas fa-angle-right",
+                "title": "Manage Subcategory",
+                "url": "admin/sub-category"
+            }
+        ]
+    },
+    {
+        "icon": "fas fa-qrcode",
+        "title": "Manage Product",
+        "url": "admin/product"
+    },
+    {
+        "icon": "fas fa-qrcode",
+        "title": "Add Stock",
+        "url": "admin/add-stock"
+    },
+    {
+        "icon": "fas fa-qrcode",
+        "title": "Remove Stock",
+        "url": "admin/remove-stock"
+    },
+    {
+        "icon": "fas fa-qrcode",
+        "title": "Product Stock",
+        "url": "admin/product-stock"
+    },
+    {
+        "icon": "fas fa-qrcode",
+        "title": "Product Sale By Date",
+        "url": "admin/product-stock-history-by-date"
+    }
+]
